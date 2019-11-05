@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    {% block body %}
+        <div class="jumbotron">
+            <div class="container">
+                <div class="col-md-12">
+                    <h1>Demande de contact {{ contact.property.title }}</h1>
+                    <p>
+                    Une nouvelle personne souhaiterais obtenir plus d'information à propos du bien
+                    <a href="{{ url('property.show', {id: contact.property.id, slug: contact.property.slug}) }}">{{ contact.property.title }}</a>
+                    </p>
+                    <table class="table">
+                        <tr>
+                            <th scope="row">Prénom</th>
+                            <td>{{ contact.firstname }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Nom</th>
+                            <td>{{ contact.lastname }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Téléphone</th>
+                            <td>{{ contact.phone }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Email</th>
+                            <td>{{ contact.email }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Message</th>
+                            <td>{{ contact.message | nl2br }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+</html>
